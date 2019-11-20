@@ -1,0 +1,202 @@
+<mat-toolbar class="main-header" color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="category">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #category="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="ordinateursPortables">Ordinateurs Portables</button>
+    <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+    <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+  </mat-menu>
+
+  <mat-menu #ordinateursPortables="matMenu">
+    <ng-template matMenuContent>
+      <button mat-menu-item [matMenuTriggerFor]="apple">Apple</button>
+      <button mat-menu-item [matMenuTriggerFor]="windows">Windows</button>
+      <button mat-menu-item [matMenuTriggerFor]="autres">Autres</button>
+    </ng-template>
+  </mat-menu>
+
+  <mat-menu #apple="matMenu">
+    <ng-template matMenuContent>
+      <button mat-menu-item>
+        <mat-icon>computer</mat-icon>
+        Portables
+      </button>
+      <button mat-menu-item>
+        <mat-icon>desktop_mac</mat-icon>
+        Fixes
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <mat-menu #windows="matMenu">
+    <ng-template matMenuContent>
+      <button mat-menu-item>
+        <mat-icon>computer</mat-icon>
+        Portables
+      </button>
+      <button mat-menu-item>
+        <mat-icon>desktop_windows</mat-icon>
+        Fixes
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <mat-menu #autres="matMenu">
+    <ng-template matMenuContent>
+      <button mat-menu-item>
+        <mat-icon>computer</mat-icon>
+        Portables
+      </button>
+      <button mat-menu-item>
+        <mat-icon>desktop_windows</mat-icon>
+        Fixes
+      </button>
+    </ng-template>
+  </mat-menu>
+
+
+  <mat-menu #vertebrates="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+    <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+    <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+    <button mat-menu-item>Birds</button>
+    <button mat-menu-item>Mammals</button>
+  </mat-menu>
+
+  <mat-menu #invertebrates="matMenu">
+    <button mat-menu-item>Insects</button>
+    <button mat-menu-item>Molluscs</button>
+    <button mat-menu-item>Crustaceans</button>
+    <button mat-menu-item>Corals</button>
+    <button mat-menu-item>Arachnids</button>
+    <button mat-menu-item>Velvet worms</button>
+    <button mat-menu-item>Horseshoe crabs</button>
+  </mat-menu>
+
+  <mat-menu #fish="matMenu">
+    <button mat-menu-item>Baikal oilfish</button>
+    <button mat-menu-item>Bala shark</button>
+    <button mat-menu-item>Ballan wrasse</button>
+    <button mat-menu-item>Bamboo shark</button>
+    <button mat-menu-item>Banded killifish</button>
+  </mat-menu>
+
+  <mat-menu #amphibians="matMenu">
+    <button mat-menu-item>Sonoran desert toad</button>
+    <button mat-menu-item>Western toad</button>
+    <button mat-menu-item>Arroyo toad</button>
+    <button mat-menu-item>Yosemite toad</button>
+  </mat-menu>
+
+  <mat-menu #reptiles="matMenu">
+    <button mat-menu-item>Banded Day Gecko</button>
+    <button mat-menu-item>Banded Gila Monster</button>
+    <button mat-menu-item>Black Tree Monitor</button>
+    <button mat-menu-item>Blue Spiny Lizard</button>
+    <button mat-menu-item disabled>Velociraptor</button>
+  </mat-menu>
+
+  <button mat-icon-button [routerLink]="['/']">
+    <mat-icon>shopping_basket</mat-icon>
+  </button>
+  <div class="branding">
+    Global
+  </div>
+  <div class="search-bar" fxFlex>
+    <form [formGroup]="searchForm" class="search-form" [ngStyle.xs]="{display: 'none'}">
+<!--    <form #f="ngForm"  class="search-form" [ngStyle.xs]="{display: 'none'}">-->
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Search" autofocus="true"  formControlName="item"
+             (input)="searchProduits()"/>
+     <!-- <input type="text" placeholder="Search" autofocus="true" name="searchQuery"  [(ngModel)]="searchQuery"
+             (input)="searchProduits()"/>-->
+    </form>
+  </div>
+  <button mat-icon-button class="ml-xs overflow-visible"
+          [matMenuTriggerFor]="cart">
+    <mat-icon>shopping_cart</mat-icon>
+    <span class="notification-label" ></span>
+  </button>
+  <mat-menu #cart="matMenu" x-position="before">
+    <ng-template matMenuContent>
+      <button mat-menu-item [routerLink]="['/checkout']">
+        <mat-icon>settings</mat-icon>
+        Checkout
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <!--<div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <button [matMenuTriggerFor]="user" mat-icon-button class="ml-xs">
+            <mat-icon>person</mat-icon>
+          </button>
+        </mat-panel-title>
+        <mat-panel-description>
+          Mon compte
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+    </mat-expansion-panel>
+  </div>-->
+
+  <div class="my-div-position-right">
+    <button [matMenuTriggerFor]="user" mat-icon-button class="ml-xs">
+      <mat-icon>person</mat-icon>
+      Mon compte
+      <mat-icon>keyboard_arrow_down</mat-icon>
+<!--      <mat-icon>keyboard_arrow_up</mat-icon>-->
+    </button>
+    <mat-menu #user="matMenu" x-position="before">
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          Manage Products
+        </button>
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          Profile
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          Sign Out
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          Sign In
+        </button>
+      </ng-template>
+    </mat-menu>
+  </div>
+
+  <div class="my-div-position-2">
+    <mat-menu #langue="matMenu">
+      <ng-template matMenuContent>
+        <button mat-menu-item disabled>Anglais (EN)</button>
+        <button mat-menu-item disabled>Français (FR)</button>
+
+      </ng-template>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="langue">
+      FR
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+
+  <div class="my-div-position-left">
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          Settings
+        </button>
+      </ng-template>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

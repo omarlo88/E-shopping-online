@@ -1,0 +1,88 @@
+<!--
+<mat-sidenav-container class="background-none shadow-none">
+  <mat-spinner *ngIf="isLoading$ | async; else productList" style="margin:0 auto;"></mat-spinner>
+  <ng-template #productList>
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="20" fxFlex.gt-xs="33.3333%" fxFlex="100" *ngFor="let product of produits$ | async">
+      <mat-card class="pa-0" [routerLink]="['/produits', product.id]"> &lt;!&ndash; routerLink="/produits/{{product.id}}" &ndash;&gt;
+          <div class="media-grid">
+            <figure style="background-color:white; height: 245px;">
+&lt;!&ndash;              <div class="product-badge" *ngIf="product.statut === 'promo'"><span>Sale</span></div>&ndash;&gt;
+              <div class="product-badge" *ngIf="product.promotion"><span>Sale</span></div>
+              <img src="assets/images/{{ product.image }}.jpg" height="245px">
+              <figcaption>
+                <p>
+
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <mat-card-content class="pa-1">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <div fxFlex>
+                <p class="ma-0">{{ product.nom }}</p>
+                <p class="ma-0 pa-0 text-md">{{ product.description }}</p>
+              </div>
+              <div class="mat-text-primary text-xl">
+
+              </div>
+
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
+  <div class="error-msg" *ngIf="error$ | async as error">
+    <p>{{ error }}</p>
+  </div>
+
+</mat-sidenav-container>
+-->
+
+
+<mat-sidenav-container class="background-none shadow-none">
+  <mat-spinner *ngIf="isLoading$ | async; else productList" style="margin:0 auto;"></mat-spinner>
+  <ng-template #productList>
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="20" fxFlex.gt-xs="33.3333%" fxFlex="100" *ngFor="let product of produits$ | async">
+        <mat-card class="pa-0"> <!-- routerLink="/produits/{{product.id}}" -->
+          <div class="media-grid">
+            <figure style="background-color:white; height: 245px;">
+              <!--              <div class="product-badge" *ngIf="product.statut === 'promo'"><span>Sale</span></div>-->
+              <div class="product-badge" *ngIf="product.promotion"><span>Sale</span></div>
+              <img src="assets/images/{{ product.image }}.jpg" height="245px">
+              <figcaption>
+                <p>
+                  <a (click)="addProductCart(product)" matTooltip="Add to cart" matTooltipPosition="left">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                  </a>
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <mat-card-content class="pa-1">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <div fxFlex class="cursor">
+                <p class="ma-0">{{ product.nom }}</p>
+                <p class="ma-0 pa-0 text-md" [routerLink]="['/produits', product.id]">{{ product.description }}</p>
+              </div>
+              <div class="mat-text-primary text-xl">
+<!--                <span class="strikethrough mat-text-muted text-sm" *ngIf="product.statut === 'promo'">-->
+                <span class="strikethrough mat-text-muted text-sm" *ngIf="product.promotion">£ {{
+                    product.rabais }}</span>
+                <span> £ {{ product.prix }}</span>
+              </div>
+              <button mat-icon-button color="accent" (click)="addProductCart(product)">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
+  <div class="error-msg" *ngIf="error$ | async as error">
+    <p>{{ error }}</p>
+  </div>
+</mat-sidenav-container>
