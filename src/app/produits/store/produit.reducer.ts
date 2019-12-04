@@ -23,8 +23,10 @@ export interface AppState extends fromRoot.AppState {
 
 //export const produitAdapter: EntityAdapter<Produit> = createEntityAdapter<Produit>();
 export const produitAdapter: EntityAdapter<Produit> = createEntityAdapter<Produit>({
-  selectId: (produit: Produit) => produit.id,
-  sortComparer: (produit1 : Produit, produit2: Produit) => produit1.nom.localeCompare(produit2.nom),
+  //selectId: (produit: Produit) => produit.id,
+  selectId: produit => produit.id,
+  //sortComparer: (produit1 : Produit, produit2: Produit) => produit1.nom.localeCompare(produit2.nom),
+  sortComparer: (a, b) => a.nom.localeCompare(b.nom)
 });
 
 export const defaultProduit: ProduitState = {
@@ -117,9 +119,7 @@ export const produitReducers = createReducer(
   })*/
   on(ProduitActions.createProduitSuccess,(state, {produit}) => (produitAdapter.addOne(produit, state))),
   on(ProduitActions.createProduitFail, (state, {error}) => ({...state, hasError: true, error: error})),
-  on(ProduitActions.updateProduitSuccess, (state, {produit}) => {
-    return produitAdapter.updateOne(produit, state)
-  }),
+  on(ProduitActions.updateProduitSuccess, (state, {produit}) => (produitAdapter.updateOne(produit, state))),
   on(ProduitActions.updateProduitFail, (state, {error}) => {
     return {
       ...state,

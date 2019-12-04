@@ -42,7 +42,6 @@ export class ProduitService {
 
   searchProduits(item: string): Observable<Produit[]>{
     console.log(item);
-    //return this.http.get<Produit[]>(`${this.apiProduits}/produitsQuery/byNom?nom=${item}`
     return this.http.get<Produit[]>(`${this.apiProduits}/produitsQuery/byNom?nom=${item}`
       //{params: new HttpParams().set('nom', item)},
       )
