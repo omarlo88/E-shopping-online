@@ -18,7 +18,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSelectModule} from "@angular/material/select";
 
-const materialComponents = [
+const materials = [
   FlexLayoutModule,
   MatToolbarModule,
   MatIconModule,
@@ -42,6 +42,6 @@ const materialComponents = [
 @NgModule({
   declarations: [],
   //imports: [],
-  exports: [materialComponents]
+  exports: [materials]
 })
 export class MaterialModule { }
