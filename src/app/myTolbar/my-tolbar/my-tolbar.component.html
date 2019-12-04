@@ -3,9 +3,11 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #category="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="ordinateursPortables">Ordinateurs Portables</button>
-    <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
-    <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+    <ng-template matMenuContent>
+      <button mat-menu-item [matMenuTriggerFor]="ordinateursPortables">Ordinateurs Portables</button>
+      <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+      <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+    </ng-template>
   </mat-menu>
 
   <mat-menu #ordinateursPortables="matMenu">
