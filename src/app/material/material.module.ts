@@ -18,30 +18,30 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSelectModule} from "@angular/material/select";
 
-
+const materialComponents = [
+  FlexLayoutModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatCheckboxModule,
+  MatSliderModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDividerModule,
+  MatListModule,
+  MatTabsModule,
+  MatButtonToggleModule,
+  MatExpansionModule,
+  MatProgressSpinnerModule,
+  MatSelectModule
+];
 
 @NgModule({
   declarations: [],
-  imports: [],
-  exports: [
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatSliderModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDividerModule,
-    MatListModule,
-    MatTabsModule,
-    MatButtonToggleModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
-    MatSelectModule
-  ]
+  //imports: [],
+  exports: [materialComponents]
 })
 export class MaterialModule { }
