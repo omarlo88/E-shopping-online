@@ -8,5 +8,6 @@ export interface Produit {
   image: string;
   statut?: string;
   promotion?: string;
+  available?: boolean;
   rabais?: number;
 }
