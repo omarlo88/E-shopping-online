@@ -20,7 +20,6 @@ const httpOptions = {
 export class ProduitService {
 
   private readonly baseUrl = environment.baseUrl;
-
   private readonly apiProduits = `${this.baseUrl}/produits`;
 
   constructor(private http: HttpClient) { }
